@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zeozone/touchOS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Window Template -->
+    <div class="window" id="window1">
+        <div class="title-bar" onmousedown="startDragging(event, 'window1')">
+            <img src="icon/terminal.png" alt="Icon 1" class="window-icon">
+            terminal
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window1')">-</button>
+                <button class="maximize-button" onclick="maximizeWindow('window1')">□</button>
+                <button class="close-button" onclick="closeWindow('window1')">x</button>
+            </div>
+        </div>
+        <div class="content" id="content1">
+            <!-- Add an iframe with a source URL -->
+            <iframe src="subpage/home.html" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <!-- Second Window with Updated Styles, matching Window 1 -->
+    <div class="window" id="window2">
+        <div class="title-bar" onmousedown="startDragging(event, 'window2')">
+            <img src="icon/chat.png" alt="Icon 1" class="window-icon">
+            chatroom
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window2')">-</button>
+                <button class="maximize-button" onclick="maximizeWindow('window2')">□</button>
+                <button class="close-button" onclick="closeWindow('window2')">x</button>
+            </div>
+        </div>
+        <div class="content" id="content2">
+            <!-- You can add more content here -->
+            <iframe src="subpage/chat.html" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <!-- Third Window -->
+    <div class="window" id="window3">
+        <div class="title-bar" onmousedown="startDragging(event, 'window3')">
+            <img src="icon/mutual.png" alt="Icon 3" class="window-icon">
+            mutuals & webrings
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window3')">-</button>
+                <button class="maximize-button" onclick="maximizeWindow('window3')">□</button>
+                <button class="close-button" onclick="closeWindow('window3')">x</button>
+            </div>
+        </div>
+        <div class="content" id="content3">
+            <!-- You can add content for the third window here -->
+            <iframe src="subpage/mutual.html" frameborder="0"></iframe>
+        </div>
+    </div>
+	
+	  <div class="window" id="window4">
+        <div class="title-bar" onmousedown="startDragging(event, 'window4')">
+            <img src="icon/text.png" alt="Icon 3" class="window-icon">
+            journal
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window4')">-</button>
+                <button class="maximize-button" onclick="maximizeWindow('window4')">□</button>
+                <button class="close-button" onclick="closeWindow('window4')">x</button>
+            </div>
+        </div>
+        <div class="content" id="content3">
+            <!-- You can add content for the third window here -->
+            <iframe src="subpage/warning.html" frameborder="0"></iframe>
+        </div>
+    </div>
+
+
+    <!-- Icon buttons -->
+    <div class="icon-button" style="top: 20px; left: 20px;" onclick="openWindow('window1')">
+        <img src="icon/terminal.png" alt="Icon 1">
+        <p>terminal</p>
+    </div>
+
+    <div class="icon-button" style="top: 20px; left: 100px;" onclick="openWindow('window2')">
+        <img src="icon/chat.png" alt="Icon 2">
+        <p>chatroom</p>
+    </div>
+
+    <!-- Add a third icon button -->
+    <div class="icon-button" style="top: 20px; left: 180px;" onclick="openWindow('window3')">
+        <img src="icon/mutual.png" alt="Icon 3">
+        <p>mutuals <br> webrings</p>
+    </div>
+	
+	    <div class="icon-button" style="top: 20px; left: 260px;" onclick="openWindow('window4')">
+        <img src="icon/text.png" alt="Icon 4">
+        <p>journal</p>
+    </div>
+	
+    <!-- JavaScript functions (link to the script.js file) -->
+    <script src="script.js"></script>
+</body>
+</html>
+

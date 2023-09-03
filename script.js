@@ -1,3 +1,13 @@
+// Add this code at the beginning of your script.js file
+document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("startup-audio");
+
+    // You can optionally pause the audio after a specific duration (e.g., 10 seconds)
+    setTimeout(function () {
+        audio.pause();
+    }, 10000); // 10 seconds in milliseconds
+});
+
 let isDragging = false;
 let initialX, initialY;
 let activeWindow = null;
