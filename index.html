@@ -45,7 +45,7 @@
     <div class="window" id="window3">
         <div class="title-bar" onmousedown="startDragging(event, 'window3')">
             <img src="icon/mutual.png" alt="Icon 3" class="window-icon">
-            mutuals
+            mutuals & webrings
             <div class="window-buttons">
                 <button class="minimize-button" onclick="minimizeWindow('window3')">-</button>
                 <button class="maximize-button" onclick="maximizeWindow('window3')">□</button>
@@ -57,6 +57,23 @@
             <iframe src="subpage/mutual.html" frameborder="0"></iframe>
         </div>
     </div>
+	
+	  <div class="window" id="window4">
+        <div class="title-bar" onmousedown="startDragging(event, 'window4')">
+            <img src="icon/text.png" alt="Icon 3" class="window-icon">
+            journal
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window4')">-</button>
+                <button class="maximize-button" onclick="maximizeWindow('window4')">□</button>
+                <button class="close-button" onclick="closeWindow('window4')">x</button>
+            </div>
+        </div>
+        <div class="content" id="content3">
+            <!-- You can add content for the third window here -->
+            <iframe src="subpage/warning.html" frameborder="0"></iframe>
+        </div>
+    </div>
+
 
     <!-- Icon buttons -->
     <div class="icon-button" style="top: 20px; left: 20px;" onclick="openWindow('window1')">
@@ -72,9 +89,14 @@
     <!-- Add a third icon button -->
     <div class="icon-button" style="top: 20px; left: 180px;" onclick="openWindow('window3')">
         <img src="icon/mutual.png" alt="Icon 3">
-        <p>mutuals/webrings</p>
+        <p>mutuals <br> webrings</p>
     </div>
-
+	
+	    <div class="icon-button" style="top: 20px; left: 260px;" onclick="openWindow('window4')">
+        <img src="icon/text.png" alt="Icon 4">
+        <p>journal</p>
+    </div>
+	
     <!-- JavaScript functions (link to the script.js file) -->
     <script src="script.js"></script>
 </body>
