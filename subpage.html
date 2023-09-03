@@ -74,6 +74,21 @@
         </div>
     </div>
 
+	  <div class="window" id="window5">
+        <div class="title-bar" onmousedown="startDragging(event, 'window5')">
+            <img src="icon/emblem-cool.png" alt="Icon 3" class="window-icon">
+            media review log
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window5')">-</button>
+                <button class="maximize-button" onclick="maximizeWindow('window5')">□</button>
+                <button class="close-button" onclick="closeWindow('window5')">x</button>
+            </div>
+        </div>
+        <div class="content" id="content5">
+            <!-- You can add content for the third window here -->
+            <iframe src="subpage/reviewlog/filmlog.html" frameborder="0"></iframe>
+        </div>
+    </div>
 
     <!-- Icon buttons -->
     <div class="icon-button" style="top: 20px; left: 20px;" onclick="openWindow('window1')">
@@ -97,6 +112,10 @@
         <p>journal</p>
     </div>
 	
+	<div class="icon-button" style="top: 20px; left: 340px;" onclick="openWindow('window5')">
+        <img src="icon/emblem-cool.png" alt="Icon 4">
+        <p>media <br>review log</p>
+    </div>
     <!-- JavaScript functions (link to the script.js file) -->
     <script src="script.js"></script>
 </body>
