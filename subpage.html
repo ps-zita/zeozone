@@ -105,7 +105,21 @@
             <iframe src="subpage/readme.html" frameborder="0"></iframe>
         </div>
     </div>
-
+    <div class="window" id="window7">
+        <div class="title-bar" onmousedown="startDragging(event, 'window7')">
+            <img src="icon/twitch.png" alt="Icon 7" class="window-icon">
+            twitch
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window7')">-</button>
+                <button class="maximize-button" onclick="maximizeWindow('window7')">□</button>
+                <button class="close-button" onclick="closeWindow('window7')">x</button>
+            </div>
+        </div>
+        <div class="content" id="content7">
+            <!-- You can add content for the third window here -->
+            <iframe src="subpage/twitch.html" frameborder="0"></iframe>
+        </div>
+    </div>
     <!-- Icon buttons -->
     <div class="icon-button" style="top: 20px; left: 20px;" onclick="openWindow('window1')">
         <img src="icon/terminal.png" alt="Icon 1">
@@ -136,6 +150,10 @@
     <div class="icon-button" style="top: 20px; left: 420px;" onclick="openWindow('window6')">
         <img src="icon/text.png" alt="Icon 4">
         <p>README</p>
+    </div>
+    <div class="icon-button" style="top: 20px; left: 500px;" onclick="openWindow('window7')">
+        <img src="icon/twitch.png" alt="Icon 7">
+        <p>twitch</p>
     </div>
     <!-- JavaScript functions (link to the script.js file) -->
     <script src="script.js"></script>
