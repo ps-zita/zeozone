@@ -76,3 +76,29 @@ h2 {
 a {
 	color: red;
 }
+
+/* Add these styles to make the type bar more fitting */
+
+.main {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+  }
+  
+  .main iframe {
+	border: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 42px; /* Adjust the height as needed */
+	background-color: black;
+	color: lime;
+	padding: 10px;
+	box-sizing: border-box;
+	font-family: 'Source Code Pro', monospace;
+	font-size: 13px;
+  }
+  
+  /* Remove the top and left properties for .main iframe */
+  
