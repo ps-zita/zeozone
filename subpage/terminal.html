@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #00ff00; /* Green text color */
+            overflow: hidden;
+        }
+
+        #terminal {
+            position: absolute;
+            bottom: 30px; /* Adjusted to leave space for the input line */
+            width: 100%;
+            height: 92%; /* Increased terminal height for better visibility in iframe */
+            background-color: #000;
+            overflow-y: auto;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 14px; /* Reduced font size */
+        }
+
+        #input-container {
+            display: flex;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: #000;
+            position: fixed;
+            bottom: 0;
+        }
+
+        #input {
+            flex: 1;
+            padding: 5px;
+            border: none;
+            outline: none;
+            background-color: #000;
+            color: #00ff00; /* Green text color */
+            font-family: 'Courier New', monospace; /* Same font as terminal */
+            font-size: 14px; /* Same font size as terminal */
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <p>> Type help for help</p>
+    </div>
+    <div id="input-container">
+        <span>&gt;</span>
+        <input type="text" id="input" autofocus>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminal = document.getElementById('terminal');
+            const input = document.getElementById('input');
+            const inputContainer = document.getElementById('input-container');
+            let currentDirectory = '';
+
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    handleCommand(input.value);
+                    input.value = '';
+                    inputContainer.scrollIntoView(false);
+                }
+            });
+
+            function handleCommand(command) {
+                const output = document.createElement('p');
+                output.textContent = '> ' + command;
+                terminal.appendChild(output);
+
+                // Process the command
+                const parts = command.split(' ');
+                const mainCommand = parts[0].toLowerCase();
+                const arg = parts.slice(1).join(' '); // Combine the arguments into a string
+
+                if (mainCommand === 'hello') {
+                    printOutput('Hi there!');
+                } else if (mainCommand === 'clear') {
+                    clearTerminal();
+                } else if (mainCommand === 'ls') {
+                    listFiles(arg);
+                } else if (mainCommand === '-ls -l') {
+                    listFilesDetailed(arg);
+                } else if (mainCommand === 'cat') {
+                    catFile(arg, currentDirectory);
+                } else if (mainCommand === 'help') {
+                    printHelp();
+                } else if (mainCommand === 'cd') {
+                    changeDirectory(arg);
+                } else {
+                    printOutput('Command not recognized. Type "help" for a list of commands.');
+                }
+
+                inputContainer.scrollIntoView(false);
+            }
+
+            function printOutput(message) {
+                const output = document.createElement('p');
+                output.textContent = message;
+                terminal.appendChild(output);
+            }
+
+            function clearTerminal() {
+                terminal.innerHTML = '';
+            }
+
+            function listFiles(directory) {
+                // If no directory is provided, assume the current directory
+                const targetDirectory = directory || currentDirectory;
+                const files = getFiles(targetDirectory);
+                printOutput(files.join('  '));
+            }
+
+            function listFilesDetailed(directory) {
+                // If no directory is provided, assume the current directory
+                const targetDirectory = directory || currentDirectory;
+                const files = getFiles(targetDirectory);
+                files.forEach(file => {
+                    printOutput(`${file.name}   ${file.size}   ${file.date}`);
+                });
+            }
+
+            function catFile(fileName, directory) {
+                // Check if the file exists
+                if (fileExists(fileName, directory)) {
+                    // Normal behavior for existing files
+                    if (fileName === 'dosgame.exe') {
+                        // Redirect only dosgame.exe to a placeholder website
+                        redirectToWebsite();
+                    } else {
+                        const content = getFileContent(fileName, directory);
+                        printOutput(content);
+                    }
+                } else {
+                    // Print an error message for non-existing files
+                    printOutput(`File '${fileName}' not found.`);
+                }
+            }
+
+            function printHelp() {
+                const helpMessage = `
+                    Available commands:
+                    - hello: Greet the user.
+                    - clear: Clear the terminal.
+                    - ls [directory]: List files in the specified directory (current directory if not provided).
+                    - -ls -l [directory]: List files with details in the specified directory (current directory if not provided).
+                    - cat <filename>: Display the contents of a file.
+                    - cd <directory>: Change to the specified directory.
+                    - help: Display this help message.
+                `;
+                printOutput(helpMessage);
+            }
+
+            function changeDirectory(directory) {
+                if (directory) {
+                    const newPath = currentDirectory ? `${currentDirectory}/${directory}` : directory;
+                    if (isValidDirectory(newPath)) {
+                        currentDirectory = newPath;
+                        printOutput(`Changed to directory: ${currentDirectory}`);
+                    } else {
+                        printOutput(`Directory '${directory}' not found.`);
+                    }
+                } else {
+                    printOutput('Usage: cd <directory>');
+                }
+            }
+
+            function getFiles(directory) {
+                // Simulated file structure
+                if (directory === 'folder') {
+                    return ['dosgame.exe', 'file1.txt', 'file2.txt'];
+                } else {
+                    return ['text.txt', 'folder'];
+                }
+            }
+
+            function getFileContent(fileName, directory) {
+                // Simulated file content
+                if (directory === 'folder' && fileName === 'file2.txt') {
+                    return 'This is file2.txt in folder. Redirecting...';
+                } else {
+                    return `Content of ${fileName} goes here.`;
+                }
+            }
+
+            function fileExists(fileName, directory) {
+                // Check if the file exists in the simulated file structure
+                const files = getFiles(directory);
+                return files.includes(fileName);
+            }
+
+            function isValidDirectory(directory) {
+                // Simulated valid directories
+                return directory === 'folder';
+            }
+
+            function redirectToWebsite() {
+                // Simulated redirection to a placeholder website
+                window.location.href = 'http://placeholder.com';
+            }
+        });
+    </script>
+</body>
+</html>

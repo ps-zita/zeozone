@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nerdOS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- structures :P -->
+    <div id="overlay" style="pointer-events:none;"></div>
+    <div class="draggable-window hidden" id="window1" onmousedown="startDragging(event,'window1')">
+        <div class="title-bar">
+            <img src="icon/text.png" alt="Icon 1" class="window-icon" width="20px" height="auto">README.txt
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window1')">--</button>
+                <button class="maximize-button" onclick="maximizeWindow('window1')">□</button>
+                <button class="close-button" onclick="closeWindow('window1')">✖</button>
+            </div>
+        </div>
+        <div class="content" id="content1"><iframe src="subpage/readme.html" frameborder="0" style="pointer-events:none;"></iframe></div>
+        
+    </div>
+    <div class="draggable-window hidden" id="window2" onmousedown="startDragging(event,'window2')">
+        <div class="title-bar">
+            <img src="icon/terminal.png" alt="Icon 2" class="window-icon" width="20px" height="auto">terminal
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window2')">--</button>
+                <button class="maximize-button" onclick="maximizeWindow('window2')">□</button>
+                <button class="close-button" onclick="closeWindow('window2')">✖</button>
+            </div>
+        </div>
+        <div class="content" id="content2"><iframe src="subpage/terminal.html" frameborder="0" style="pointer-events:none;"></iframe></div>
+    </div>
+    <div class="draggable-window hidden" id="window3" onmousedown="startDragging(event,'window3')">
+        <div class="title-bar">
+            <img src="icon/firefox.png" alt="Icon 3" class="window-icon" width="20px" height="auto">Internet
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window3')">--</button>
+                <button class="maximize-button" onclick="maximizeWindow('window3')">□</button>
+                <button class="close-button" onclick="closeWindow('window3')">✖</button>
+            </div>
+        </div>
+        <div class="content" id="content3"><iframe src="https://theoldnet.com/get?url=google.com&year=2008&scripts=false&decode=false" frameborder="0" style="pointer-events:none;"></iframe></div>
+    </div>
+    <div class="draggable-window hidden" id="window4" onmousedown="startDragging(event,'window4')">
+        <div class="title-bar">
+            <img src="icon/chat.png" alt="Icon 4" class="window-icon" width="20px" height="auto">chatroom
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window4')">--</button>
+                <button class="maximize-button" onclick="maximizeWindow('window4')">□</button>
+                <button class="close-button" onclick="closeWindow('window4')">✖</button>
+            </div>
+        </div>
+        <div class="content" id="content4"><iframe src="subpage/chat.html" frameborder="0" style="pointer-events:none;"></iframe></div>
+        
+    </div>
+    <div class="draggable-window hidden" id="window5" onmousedown="startDragging(event,'window5')">
+        <div class="title-bar">
+            <img src="icon/mutual.png" alt="Icon 5" class="window-icon" width="20px" height="auto">mutuals/webring
+            <div class="window-buttons">
+                <button class="minimize-button" onclick="minimizeWindow('window5')">--</button>
+                <button class="maximize-button" onclick="maximizeWindow('window5')">□</button>
+                <button class="close-button" onclick="closeWindow('window5')">✖</button>
+            </div>
+        </div>
+        <div class="content" id="content5"><iframe src="subpage/mutual.html" frameborder="0" style="pointer-events:none;"></iframe></div>
+        
+    </div>
+    <!-- desktop -->
+    <div class="icon-button desktop-icon" style="top:20px;left:250px;" onclick="openWindow('window1', this)">
+        <img src="icon/text.png" alt="Icon 8">
+        <p>README.txt</p>
+    </div>
+    <div class="icon-button desktop-icon" style="top:20px;left:350px;" onclick="openWindow('window5', this)">
+        <img src="icon/mutual.png" alt="Icon 9">
+        <p>mutuals/webring</p>
+    </div>
+    <!-- dock -->
+    <div id="dock">
+        <a onclick="openWindow('window2')"><img src="icon/terminal.png" alt="App 2"></a>
+        <a onclick="openWindow('window3')"><img src="icon/firefox.png" alt="App 3"></a>
+        <a onclick="openWindow('window4')"><img src="icon/chat.png" alt="App 4"></a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
